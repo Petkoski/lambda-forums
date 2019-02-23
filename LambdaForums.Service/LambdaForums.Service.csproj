@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LambdaForums.Data\LambdaForums.Data.csproj" />
+  </ItemGroup>
+
 </Project>
