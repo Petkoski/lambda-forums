@@ -2,7 +2,7 @@
 
 namespace LambdaForums.Models.Post
 {
-    public class PostListingModel
+    public class PostListingViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
