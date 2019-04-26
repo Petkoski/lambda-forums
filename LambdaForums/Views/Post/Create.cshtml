@@ -1,0 +1,21 @@
+﻿@model LambdaForums.Models.Post.NewPostViewModel
+
+<h1>New Post | @Model.ForumName</h1>
+
+<form asp-action="AddPost" method="post" id="addPostForm">
+    @* asp-action is a tag helper *@
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+    </div>
+    <button type="submit" id="submitPostBtn" class="btn btn-submitPost">
+        Submit Post
+    </button>
+
+    <input asp-for="ForumId" type="hidden" />
+    @* hidden field to make sure that our form passes up the ForumId on this NewPostViewModel when it makes the POST request *@
+</form>
