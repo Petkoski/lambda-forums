@@ -44,9 +44,11 @@ namespace LambdaForums.Service
                 .First(forum => forum.Id == id).Posts;
         }
 
-        public Task Add(Post post)
+        public async Task Add(Post post)
         {
-            throw new NotImplementedException();
+            //_context.Add(post); //This line was used in the tutorial.
+            _context.Posts.Add(post);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(int id)
