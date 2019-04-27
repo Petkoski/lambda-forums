@@ -29,7 +29,10 @@ namespace LambdaForums.Service
 
         public IEnumerable<Post> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Posts
+                .Include(post => post.User)
+                .Include(post => post.Replies).ThenInclude(reply => reply.User)
+                .Include(post => post.Forum);
         }
 
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
@@ -42,6 +45,11 @@ namespace LambdaForums.Service
             //Return all posts from a specific forum
             return _context.Forums
                 .First(forum => forum.Id == id).Posts;
+        }
+
+        public IEnumerable<Post> GetLatestPosts(int postsNumber)
+        {
+            return GetAll().OrderByDescending(post => post.Created).Take(postsNumber);
         }
 
         public async Task Add(Post post)
