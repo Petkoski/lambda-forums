@@ -21,11 +21,12 @@ namespace LambdaForums.Controllers
         public IActionResult Index()
         {
             IEnumerable<ForumListingViewModel> forums = _forumService.GetAll()
-                .Select(forum => new ForumListingViewModel {
+                .Select(forum => new ForumListingViewModel
+                {
                     Id = forum.Id,
                     Title = forum.Title,
                     Description = forum.Description
-            });
+                });
 
             var model = new ForumIndexViewModel
             {
