@@ -17,7 +17,7 @@ namespace LambdaForums.Controllers
             _postService = postService;
         }
 
-        public void Results(string searchQuery)
+        public IActionResult Results(string searchQuery)
         {
             var posts = _postService.GetFilteredPosts(searchQuery);
             var areNoResults = (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
@@ -40,6 +40,8 @@ namespace LambdaForums.Controllers
                 SearchQuery = searchQuery,
                 EmptySearchResults = areNoResults
             };
+
+            return View(model);
         }
 
         private ForumListingViewModel BuildForumListing(Post post)
