@@ -52,6 +52,13 @@ namespace LambdaForums.Service
                        || post.Content.ToLower().Contains(searchQuery.ToLower()));
         }
 
+        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        {
+            return GetAll().Where(post 
+                => post.Title.ToLower().Contains(searchQuery.ToLower()) 
+                || post.Content.ToLower().Contains(searchQuery.ToLower()));
+        }
+
         public IEnumerable<Post> GetPostsByForum(int id)
         {
             //Return all posts from a specific forum
