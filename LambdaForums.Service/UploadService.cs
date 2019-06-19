@@ -1,6 +1,8 @@
-﻿namespace LambdaForums.Service
+﻿using LambdaForums.Data;
+
+namespace LambdaForums.Service
 {
-    class UploadService
+    public class UploadService : IUpload
     {
     }
 }

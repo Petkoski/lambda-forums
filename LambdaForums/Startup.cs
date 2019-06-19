@@ -34,6 +34,8 @@ namespace LambdaForums
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
+            services.AddScoped<IApplicationUser, ApplicationUserService>();
+            services.AddScoped<IUpload, UploadService>();
             /**
              * So in our PostController:
              * Our app knows when our PostController is asking for an implementation of IPost, its going to use PostService class to fullfill that responsibility.

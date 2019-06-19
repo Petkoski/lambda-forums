@@ -7,7 +7,7 @@ using LambdaForums.Data.Models;
 
 namespace LambdaForums.Service
 {
-    class ApplicationUserService : IApplicationUser
+    public class ApplicationUserService : IApplicationUser
     {
         private readonly ApplicationDbContext _context;
 
