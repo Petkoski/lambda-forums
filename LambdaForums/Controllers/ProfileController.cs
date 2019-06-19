@@ -1,5 +1,6 @@
 ﻿using LambdaForums.Data;
 using LambdaForums.Data.Models;
+using LambdaForums.Models.ApplicationUser;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,20 @@ namespace LambdaForums.Controllers
         }
 
         public IActionResult Detail(string id)
-        {   
+        {
+            var user = _userService.GetById(id);
+            var userRoles = _userManager.GetRolesAsync(user).Result;    
+
+            var model = new ProfileViewModel
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                UserRating = user.Rating.ToString(),
+                Email = user.Email,
+                ProfileImageUrl = user.ProfileImageUrl,
+                MemeberSince = user.MemberSince,
+                IsAdmin = userRoles.Contains("Admin")
+            };
 
             return View();
         }

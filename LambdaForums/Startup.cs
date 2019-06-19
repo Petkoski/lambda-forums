@@ -39,11 +39,13 @@ namespace LambdaForums
              * Our app knows when our PostController is asking for an implementation of IPost, its going to use PostService class to fullfill that responsibility.
              */
 
+            services.AddTransient<DataSeeder>();
+
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeeder dataSeeder)
         {
             if (env.IsDevelopment())
             {
@@ -55,6 +57,8 @@ namespace LambdaForums
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            dataSeeder.SeedSuperUser().Wait();
 
             app.UseStaticFiles();
 
