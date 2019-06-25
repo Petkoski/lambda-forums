@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using LambdaForums.Data;
 using LambdaForums.Data.Models;
 using LambdaForums.Models.ApplicationUser;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,6 +59,26 @@ namespace LambdaForums.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfileImage(IFormFile file)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            //Connect to Azure Storage Container
+            //Get Blob Container
+
+            //Parse the Content Disposition response header
+            //Grab the filename
+
+            //Get a reference to a Block Blob
+            //On that block blob, upload our file
+
+            //Set the user's profile image to the received URI
+
+            //Redirect to user's profile page
+            return null;
         }
     }
 }
